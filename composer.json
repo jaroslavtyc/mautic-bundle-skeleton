@@ -21,6 +21,6 @@
     "phpunit/phpunit": "~4.4",
     "mockery/mockery": ">=0.9"
   },
-  "minimal-stability" : "dev",
+  "minimal-stability": "dev",
   "prefer-stable": true
 }
