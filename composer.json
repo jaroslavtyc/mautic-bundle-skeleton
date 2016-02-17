@@ -1,0 +1,26 @@
+{
+  "name": "friendsofmautic/bundle-skeleton",
+  "license": "MIT",
+  "type": "library",
+  "description": "Base files from Mautic for easier develop of a new bundle",
+  "autoload": {
+    "psr-4": {
+      "Mautic\\": "cloned/"
+    }
+  },
+  "require": {
+    "php": "^5.3.7",
+    "symfony/symfony": "~2.6",
+    "jms/serializer": "^1.0",
+    "friendsofsymfony/oauth-server-bundle": "^1.0",
+    "friendsofsymfony/rest-bundle": "^1.0",
+    "doctrine/orm": "^2.5",
+    "willdurand/oauth-server-bundle": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.4",
+    "mockery/mockery": ">=0.9"
+  },
+  "minimal-stability" : "dev",
+  "prefer-stable": true
+}
