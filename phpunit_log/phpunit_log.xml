@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="all" tests="1" assertions="167" failures="0" errors="0" time="0.126281">
-    <testsuite name="FOM\Tests\ApiBundle\CanLoadAnyClassTest" file="/home/jaroslav/Dropbox/Projects/mautic/bundle-skeleton/FOM/Tests/CanLoadAnyClassTest.php" tests="1" assertions="167" failures="0" errors="0" time="0.126281">
-      <testcase name="I_can_load_any_class" class="FOM\Tests\ApiBundle\CanLoadAnyClassTest" file="/home/jaroslav/Dropbox/Projects/mautic/bundle-skeleton/FOM/Tests/CanLoadAnyClassTest.php" line="9" assertions="167" time="0.126281"/>
-    </testsuite>
-  </testsuite>
-</testsuites>
