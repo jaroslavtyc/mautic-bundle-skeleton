@@ -3,7 +3,6 @@ php:
   - 5.6
   - 5.5
   - 5.4
-  - 5.3 # probably 5.3.29, see https://github.com/travis-ci-examples/php/blob/master/.travis.yml
   - nightly
   - hhvm
   - hhvm-nightly

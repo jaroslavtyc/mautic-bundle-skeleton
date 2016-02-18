@@ -9,7 +9,7 @@
     }
   },
   "require": {
-    "php": "^5.3.7",
+    "php": "~5.4",
     "symfony/symfony": "~2.6",
     "jms/serializer": "^1.0",
     "friendsofsymfony/oauth-server-bundle": "^1.0",
