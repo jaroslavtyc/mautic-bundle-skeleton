@@ -18,7 +18,9 @@ By fetching this skeleton to your code, the problem is solved.
 Your IDE will finally get access to all those classes you are inheriting from.
 
 ## Usage
-`composer require-dev friendsofmautic/bundle-skeleton` 
+ - `composer require-dev friendsofmautic/bundle-skeleton`
+ - replace *skeleton* word in every place by your bundle name
+ - inspire by EventListener\WhyMeSubscriber and **remove it**, or rewrite
 
 ## Technical details
 This library provides [Mautic](https://www.mautic.org/) code by [composer](https://getcomposer.org/) ([packagist.org](https://packagist.org/) respectively),
