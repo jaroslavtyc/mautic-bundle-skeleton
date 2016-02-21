@@ -48,7 +48,7 @@
     "doctrine/cache": "1.4.*,>=1.4.2",
     "doctrine/common": "2.4.*,>=2.4.3",
     "doctrine/dbal": "2.4.*",
-    "doctrine/migrations": "dev-master",
+    "doctrine/migrations": "1.2.*",
     "doctrine/orm": "2.4.*,>=2.4.8",
     "doctrine/doctrine-bundle": "~1.2",
     "doctrine/doctrine-cache-bundle": "~1.0",
