@@ -19,6 +19,16 @@ Your IDE will finally get access to all those classes you are inheriting from.
 
 ## Usage
  - `composer require-dev friendsofmautic/bundle-skeleton`
+ - extend your project composer.json by new repository  
+ ```json
+   "repositories": [
+     {
+       "type": "git",
+       "url": "https://github.com/mautic/mautic.git"
+     }
+   ],
+   ```  
+    - same way as in ```bundle-skeleton/composer.json```
  - replace *skeleton* word in every place by your bundle name
  - inspire by EventListener\WhyMeSubscriber and **remove it**, or rewrite
 
@@ -30,5 +40,3 @@ Your IDE will finally get access to all those classes you are inheriting from.
 
 ## Technical details
 This library provides [Mautic](https://www.mautic.org/) code by [composer](https://getcomposer.org/) ([packagist.org](https://packagist.org/) respectively),
-
-Included Mautic version is [1.2.4](https://github.com/mautic/mautic/tree/1.2.4)
