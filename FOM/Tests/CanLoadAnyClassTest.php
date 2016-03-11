@@ -9,14 +9,14 @@ class CanLoadAnyClassTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_load_any_mautic_class()
     {
-        $this->assertGreaterThan(0, preg_match('~[\\\](?<basename>\w+)$~', __NAMESPACE__, $matches));
+        self::assertGreaterThan(0, preg_match('~[\\\](?<basename>\w+)$~', __NAMESPACE__, $matches));
         $testedDir = __DIR__ . '/../../vendor/mautic/core/app/bundles/' . $matches['basename'];
         $this->I_can_load_any_class_from($testedDir);
     }
 
     protected function I_can_load_any_class_from($testedDir)
     {
-        $this->assertTrue(is_dir($testedDir), $testedDir);
+        self::assertTrue(is_dir($testedDir), "Was searching for $testedDir");
         $subFolders = $this->filterSubFolders(scandir($testedDir));
         $subDirs = $this->filterDirs($subFolders, $testedDir);
         foreach ($subDirs as $subDir) {
@@ -27,9 +27,9 @@ class CanLoadAnyClassTest extends \PHPUnit_Framework_TestCase
         $testedNamespace = str_replace('/', '\\', preg_replace('~^.+\w+[\\\/]mautic[\\\/]core[\\\/]app[\\\/]bundles[\\\/]~', 'Mautic\\', realpath($testedDir)));
         foreach ($classFiles as $classFile) {
             $className = $testedNamespace . '\\' . preg_replace('~\.php~', '', $classFile);
-            $this->assertFalse(class_exists($className, false /* without autoload */));
-            $this->assertSame(1, include_once $testedDir . DIRECTORY_SEPARATOR . $classFile);
-            $this->assertTrue(class_exists($className, false /* without autoload */), $className);
+            self::assertFalse(class_exists($className, false /* without autoload */));
+            self::assertSame(1, include_once $testedDir . DIRECTORY_SEPARATOR . $classFile);
+            self::assertTrue(class_exists($className, false /* without autoload */), $className);
         }
     }
 
