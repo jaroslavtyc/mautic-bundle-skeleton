@@ -1,7 +1,7 @@
 <?php
-namespace FOM\Tests\ApiBundle;
+namespace FOM\Tests\MauticSkeletonBundle;
 
-class CanLoadAnyClassTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * No extended-by
@@ -10,7 +10,7 @@ class CanLoadAnyClassTest extends \PHPUnit_Framework_TestCase
     public function I_can_load_any_mautic_class()
     {
         self::assertGreaterThan(0, preg_match('~[\\\](?<basename>\w+)$~', __NAMESPACE__, $matches));
-        $testedDir = __DIR__ . '/../../vendor/mautic/core/app/bundles/' . $matches['basename'];
+        $testedDir = __DIR__ . '/../../../vendor/mautic/core/app/bundles/' . $matches['basename'];
         $this->I_can_load_any_class_from($testedDir);
     }
 

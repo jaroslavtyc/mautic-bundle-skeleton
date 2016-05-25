@@ -1,5 +1,5 @@
 <?php
-namespace FOM\Tests\ApiBundle;
+namespace FOM\Tests\MauticSkeletonBundle;
 
 class VersionTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
 
     private function getGitTagHighestVersion()
     {
-        $tagsDir = __DIR__ . '/../../.git/refs/tags/';
+        $tagsDir = __DIR__ . '/../../../.git/refs/tags/';
         self::assertFileExists($tagsDir);
         $tags = [];
         foreach (scandir($tagsDir) as $folder) {
@@ -27,7 +27,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
 
     private function getIncludedMauticVersion()
     {
-        $composerJson = __DIR__ . '/../../composer.json';
+        $composerJson = __DIR__ . '/../../../composer.json';
         self::assertFileExists($composerJson);
         $composerSettings = json_decode(file_get_contents($composerJson), true /* as array */);
         self::assertNotEmpty($composerSettings['require']['mautic/core']);
