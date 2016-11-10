@@ -28,7 +28,7 @@ Your IDE will finally get access to all those classes you are inheriting from.
      }
    ],
    ```  
-    - same way as it is in [```bundle-skeleton/composer.json```](/jaroslavtyc/mautic-bundle-skeleton/blob/master/composer.json)
+    - same way as it is in [```mautic-bundle-skeleton/composer.json```](./composer.json)
  - copy / paste whole *MauticBundleSkeleton* under name of **your** bundle name to a place you want
  - replace in the copied *MauticBundleSkeleton* the *Skeleton* word in every place by **your** bundle name
  - get inspired by EventListener\WhyMeSubscriber and **remove it**, or **rewrite**
