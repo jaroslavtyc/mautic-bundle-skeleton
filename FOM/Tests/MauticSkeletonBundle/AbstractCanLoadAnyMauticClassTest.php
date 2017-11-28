@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1); // on PHP 7+ are standard PHP methods strict to types of given parameters
+
 namespace FOM\Tests\MauticSkeletonBundle;
 
 abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_TestCase
@@ -9,33 +11,34 @@ abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_Test
      */
     public function I_can_load_any_mautic_class()
     {
-        self::assertGreaterThan(0, preg_match('~[\\\](?<basename>\w+)$~', __NAMESPACE__, $matches));
+        self::assertGreaterThan(0, \preg_match('~[\\\](?<basename>\w+)$~', __NAMESPACE__, $matches));
         $testedDir = __DIR__ . '/../../../vendor/mautic/core/app/bundles/' . $matches['basename'];
         $this->I_can_load_any_class_from($testedDir);
     }
 
     protected function I_can_load_any_class_from($testedDir)
     {
-        self::assertTrue(is_dir($testedDir), "Was searching for $testedDir");
-        $subFolders = $this->filterSubFolders(scandir($testedDir));
+        self::assertTrue(\is_dir($testedDir), "Was searching for $testedDir");
+        $subFolders = $this->filterSubFolders(\scandir($testedDir, SCANDIR_SORT_NONE));
         $subDirs = $this->filterDirs($subFolders, $testedDir);
         foreach ($subDirs as $subDir) {
             // recursively
             $this->I_can_load_any_class_from($testedDir . DIRECTORY_SEPARATOR . $subDir);
         }
         $classFiles = $this->filterPhpClassFiles($subFolders, $testedDir);
-        $testedNamespace = str_replace('/', '\\', preg_replace('~^.+\w+[\\\/]mautic[\\\/]core[\\\/]app[\\\/]bundles[\\\/]~', 'Mautic\\', realpath($testedDir)));
+        $testedNamespace = \str_replace('/', '\\', \preg_replace('~^.+\w+[\\\/]mautic[\\\/]core[\\\/]app[\\\/]bundles[\\\/]~', 'Mautic\\', \realpath($testedDir)));
         foreach ($classFiles as $classFile) {
-            $className = $testedNamespace . '\\' . preg_replace('~\.php~', '', $classFile);
-            self::assertFalse(class_exists($className, false /* without autoload */));
-            self::assertSame(1, include_once $testedDir . DIRECTORY_SEPARATOR . $classFile);
-            self::assertTrue(class_exists($className, false /* without autoload */), $className);
+            $className = $testedNamespace . '\\' . \preg_replace('~\.php~', '', $classFile);
+            self::assertFalse(\class_exists($className, false /* without autoload */));
+            /** @noinspection PhpIncludeInspection */
+            self::assertSame(1, include $testedDir . DIRECTORY_SEPARATOR . $classFile);
+            self::assertTrue(\class_exists($className, false /* without autoload */), $className);
         }
     }
 
-    private function filterSubFolders(array $folders)
+    private function filterSubFolders(array $folders): array
     {
-        return array_filter(
+        return \array_filter(
             $folders,
             function ($file) {
                 return $file !== '.' && $file !== '..';
@@ -43,24 +46,24 @@ abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_Test
         );
     }
 
-    private function filterPhpClassFiles(array $folders, $inDir)
+    private function filterPhpClassFiles(array $folders, string $inDir): array
     {
-        return array_filter(
+        return \array_filter(
             $folders,
             function ($file) use ($inDir) {
                 return
-                    preg_match('~[A-Z]\w+\.php$~', $file)
-                    && is_file($inDir . DIRECTORY_SEPARATOR . $file);
+                    \preg_match('~[A-Z]\w+\.php$~', $file)
+                    && \is_file($inDir . DIRECTORY_SEPARATOR . $file);
             }
         );
     }
 
-    private function filterDirs(array $folders, $inDir)
+    private function filterDirs(array $folders, string $inDir): array
     {
-        return array_filter(
+        return \array_filter(
             $folders,
             function ($file) use ($inDir) {
-                return is_dir($inDir . DIRECTORY_SEPARATOR . $file);
+                return \is_dir($inDir . DIRECTORY_SEPARATOR . $file);
             }
         );
     }
