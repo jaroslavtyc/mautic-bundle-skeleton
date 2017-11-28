@@ -14,14 +14,14 @@ class WhyMeSubscriber extends CommonSubscriber
      */
     static public function getSubscribedEvents()
     {
-        return [
+        return array(
             UserEvents::USER_PRE_DELETE => 'iWarnYou', /* 0 is used as a default priority */
-            UserEvents::USER_POST_DELETE => ['whoWillPayForThis', 9999 /* high priority */],
-            UserEvents::USER_POST_DELETE => [
-                ['youWillPay', 9998 /* a little bit lesser priority */],
-                ['userOfYourCreationWill' /* 0 si used as a default priority */]
-            ]
-        ];
+            UserEvents::USER_POST_DELETE => array('whoWillPayForThis', 9999 /* high priority */),
+            UserEvents::USER_POST_DELETE => array(
+                array('youWillPay', 9998 /* a little bit lesser priority */),
+                array('userOfYourCreationWill' /* 0 si used as a default priority */)
+            )
+        );
     }
 
     public function iWarnYou(UserEvent $event)

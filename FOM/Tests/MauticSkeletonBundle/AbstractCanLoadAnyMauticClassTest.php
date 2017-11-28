@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1); // on PHP 7+ are standard PHP methods strict to types of given parameters
-
 namespace FOM\Tests\MauticSkeletonBundle;
 
 abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_TestCase
@@ -36,7 +34,7 @@ abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_Test
         }
     }
 
-    private function filterSubFolders(array $folders): array
+    private function filterSubFolders(array $folders)
     {
         return \array_filter(
             $folders,
@@ -46,7 +44,7 @@ abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_Test
         );
     }
 
-    private function filterPhpClassFiles(array $folders, string $inDir): array
+    private function filterPhpClassFiles(array $folders, $inDir)
     {
         return \array_filter(
             $folders,
@@ -58,7 +56,7 @@ abstract class AbstractCanLoadAnyMauticClassTest extends \PHPUnit_Framework_Test
         );
     }
 
-    private function filterDirs(array $folders, string $inDir): array
+    private function filterDirs(array $folders, $inDir)
     {
         return \array_filter(
             $folders,
