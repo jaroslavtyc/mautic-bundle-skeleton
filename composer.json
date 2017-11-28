@@ -11,11 +11,11 @@
   ],
   "require": {
     "php": ">=5.6.19 < 7.2",
-    "mautic/core": "2.10.0"
+    "mautic/core": "2.11.0"
   },
   "require-dev": {
     "php": ">=5.6.19",
-    "phpunit/phpunit": "~4.5"
+    "phpunit/phpunit": "^5.7"
   },
   "minimum-stability": "dev",
   "prefer-stable": true
