@@ -41,3 +41,6 @@ Your IDE will finally get access to all those classes you are inheriting from.
 
 ## Technical details
 This library provides [Mautic](https://www.mautic.org/) code by [composer](https://getcomposer.org/) ([packagist.org](https://packagist.org/) respectively),
+
+# Hint for mautic Twig plugin
+If you are going to create a Mautic plugin for [Twig](https://twig.symfony.com/doc/2.x/), a good start can be [mautic-twig-plugin-skeleton](https://github.com/dongilbert/mautic-twig-plugin-skeleton).
