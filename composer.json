@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=5.3.10",
-    "mautic/core": "1.4.0"
+    "mautic/core": "1.4.1"
   },
   "require-dev": {
     "php": ">=5.3.10",
