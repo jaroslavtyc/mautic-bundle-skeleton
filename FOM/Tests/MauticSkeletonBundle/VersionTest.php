@@ -19,7 +19,7 @@ class VersionTest extends \PHPUnit_Framework_TestCase
         if ($return === 0) { // no error
             self::assertNotEmpty($tags, 'No GIT tags found by `cd ' . __DIR__ . ' && git tag`');
 
-            return \max($tags);
+            return $this->getMaxVersion($tags);
         }
         foreach (\scandir($tagsDir, SCANDIR_SORT_NONE) as $folder) { // fallback by scanning GIT dir itself
             if (\preg_match('~^v?\d+\.\d+(\.\d+)?$~i', $folder)) {
@@ -28,7 +28,25 @@ class VersionTest extends \PHPUnit_Framework_TestCase
         }
         self::assertNotEmpty($tags, 'No GIT tags found in dir ' . \realpath($tagsDir));
 
-        return \max($tags);
+        return $this->getMaxVersion($tags);
+    }
+
+    private function getMaxVersion(array $versions)
+    {
+        usort($versions, function ($someTag, $anotherTag) {
+            $someVersion = $this->parseVersion($someTag);
+            $anotherVersion = $this->parseVersion($anotherTag);
+            foreach ($someVersion as $index => $someVersionPart) {
+                $anotherVersionPart = $anotherVersion[$index];
+                if ($someVersionPart !== $anotherVersionPart) {
+                    return $someVersionPart - $anotherVersionPart;
+                }
+            }
+
+            return 0; // versions are same
+        });
+
+        return end($versions);
     }
 
     private function getIncludedMauticVersion()
