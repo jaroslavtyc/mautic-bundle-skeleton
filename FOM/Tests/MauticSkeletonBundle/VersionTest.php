@@ -74,16 +74,13 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     private function parseVersion($versionDefinition)
     {
-        self::assertGreaterThan(0, \preg_match_all('~(?<parts>\d+)\.?~', $versionDefinition, $matches));
-        self::assertGreaterThanOrEqual(2, \count($matches['parts']));
-        self::assertLessThanOrEqual(3, \count($matches['parts']));
-        if (\count($matches['parts']) < 3) {
-            $matches['parts'][] = 0; // minor version
-        }
+        self::assertGreaterThan(0, \preg_match('~^\D*(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)?~', $versionDefinition, $matches));
+        self::assertNotEmpty($matches['major']);
+        $version[] = (int)$matches['major'];
+        $version[] = $matches['minor'] ? (int)$matches['minor'] : 0;
+        $version[] = $matches['patch'] ? (int)$matches['patch'] : 0;
 
-        return array_map(function ($part) {
-            return (int)$part;
-        }, $matches['parts']);
+        return $version;
     }
 
     private function getIncludedMauticRequiredPhpVersion()
