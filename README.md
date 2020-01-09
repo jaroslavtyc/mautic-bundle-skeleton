@@ -19,17 +19,7 @@ Your IDE will finally get access to all those classes you are inheriting from.
 
 ## Usage
  - `composer require-dev friendsofmautic/bundle-skeleton`
- - extend your project composer.json by new repository  
- ```json
-   "repositories": [
-     {
-       "type": "git",
-       "url": "https://github.com/mautic/mautic.git"
-     }
-   ],
-   ```  
-    - same way as it is in [```mautic-bundle-skeleton/composer.json```](./composer.json)
- - copy / paste whole *MauticBundleSkeleton* under name of **your** bundle name to a place you want
+ - copy & paste whole *MauticBundleSkeleton* under name of **your** bundle name to a place you want
  - replace in the copied *MauticBundleSkeleton* the *Skeleton* word in every place by **your** bundle name
  - get inspired by EventListener\WhyMeSubscriber and **remove it**, or **rewrite**
 
